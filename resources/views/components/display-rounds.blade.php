@@ -1,5 +1,5 @@
 <table class="table-auto border-2 border-separate rounded-t-xl border-green-700 border-spacing-0 overflow-hidden">
-    <caption class="fontbold text-4xl">{{__('Rounds')}}</caption>
+    <caption class="fontbold text-4xl pb-2">{{__('Rounds')}}</caption>
     <thead class="bg-green-800">
         <tr>
             <th class="px-2 py-1">{{__('Judge')}}</th>
