@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Addbook;
+use App\Http\Controllers\BookController;
 use App\Models\Round;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoundController;
@@ -20,7 +22,9 @@ Route::post('/round-store',[RoundController::class, 'storeRound'])->name('round.
 
 Route::get('/get-judges',[RoundController::class, 'getJudges'])->name('get.judges');
 
-Route::get('/create-suggestion', [SuggestionController::class, 'create'])->middleware(['auth','verified'])->name('create.suggestion');
+Route::post('/add-book', [BookController::class, 'create'])->middleware(['auth','verified'])->name('add.book');
+
+Route::get('/my-books', [BookController::class, 'myBooks'])->middleware(['auth','verified'])->name('my.books');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

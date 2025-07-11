@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class CreateSuggestion extends Component
+class AddBook extends Component
 {
-    public $suggestions;
+    
 
-    public function __construct($suggestions)
+    public function __construct($addbook)
     {
-        $this->suggestions = $suggestions;
+      
     }
 
     /**
@@ -20,6 +20,6 @@ class CreateSuggestion extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.create-suggestion');
+        return view('components.add-book');
     }
 }

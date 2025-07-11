@@ -47,9 +47,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function suggestions(): HasMany
+    public function books(): HasMany
     {
-        return $this->hasMany(Suggestion::class);
+        return $this->hasMany(Book::class);
     }
     
 }
