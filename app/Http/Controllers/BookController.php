@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function create(){
-        $books = auth()->user()
+    public function myBooks(Request $request){
+        $myBooks = auth()->user()
             ->books()
             ->orderby('created_at', 'desc')
             ->get();
-        return view('mybooks', compact('books'));
+        return view('mybooks', compact('myBooks'));
     }
 
     public function storeBook(Request $request){
@@ -29,19 +29,12 @@ class BookController extends Controller
         foreach($incomingFields as $key => &$field)
             $field = strip_tags($field);
         
-        $book = new Book();
-        $book->id = auth()->user();
-        $book->title = $incomingFields['title'];
-        $book->author = $incomingFields['author'];
-        $book->genre = $incomingFields['genre'];
-        $book->ISBN = $incomingFields['ISBN'];
-        $book->GoodReads_Link = $incomingFields['goodreads_link'];
-        $book->save();
-        
+       $book = new Book($incomingFields);
+       $book->user_id = auth()->id();
+       $book->save();
 
+        return redirect('my-books');
     }
 
-    public function myBooks(Request $request){
-        return view('my-books');
-    }
+  
 }

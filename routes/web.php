@@ -22,7 +22,7 @@ Route::post('/round-store',[RoundController::class, 'storeRound'])->name('round.
 
 Route::get('/get-judges',[RoundController::class, 'getJudges'])->name('get.judges');
 
-Route::post('/add-book', [BookController::class, 'create'])->middleware(['auth','verified'])->name('add.book');
+Route::post('/add-book', [BookController::class, 'storeBook'])->middleware(['auth','verified'])->name('add.book');
 
 Route::get('/my-books', [BookController::class, 'myBooks'])->middleware(['auth','verified'])->name('my.books');
 

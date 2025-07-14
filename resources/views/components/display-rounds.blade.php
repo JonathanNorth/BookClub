@@ -8,7 +8,7 @@
             <th class="px-2 py-1">{{__('Pick Date')}}</th>
         </tr>
     </thead>   
-    <tbody class="">                     
+    <tbody>                     
         @if(!empty($rounds))
             @foreach ($rounds as $round)
             <tr class="odd:bg-slate-700 even:bg-slate-600 hover:bg-gray-500">

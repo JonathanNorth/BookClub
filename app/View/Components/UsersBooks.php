@@ -6,14 +6,17 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class my-books.blade extends Component
+class UsersBooks extends Component
 {
+
+    public $myBooks;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($myBooks)
     {
-        //
+        $this->myBooks = $myBooks;
+        
     }
 
     /**
@@ -21,6 +24,6 @@ class my-books.blade extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.my-books.blade.php');
+        return view('components.users-books');
     }
 }
