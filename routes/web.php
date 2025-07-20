@@ -5,9 +5,9 @@ use App\Models\Juding;
 use App\Http\Controllers\Addbook;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\JudgeController;
 use App\Http\Controllers\RoundController;
 use Pest\Mutate\Mutators\Math\RoundToCeil;
-use App\Http\Controllers\JudgingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuggestionController;
 
@@ -28,7 +28,12 @@ Route::post('/add-book', [BookController::class, 'storeBook'])->middleware(['aut
 
 Route::get('/my-books', [BookController::class, 'myBooks'])->middleware(['auth','verified'])->name('my.books');
 
-//Route::get('/display-juding', [JudgingController::class, 'displayJudging'])->middleware(['auth','verified'])->name('display.judging');
+Route::get('/display-juding', [JudgeController::class, 'displayJudgingRound'])->middleware(['auth','verified'])->name('display.judge');
+
+Route::post('/add-suggestion', [JudgeController::class, 'addSuggestionToRound'])->middleware(['auth','verified'])->name('add.suggestion.to.round');
+
+Route::get('/create-suggestion', [SuggestionController::class, 'create'])->middleware(['auth','verified'])->name('create.suggestion');
+Route::post('/store-suggestion', [SuggestionController::class, 'store'])->middleware(['auth','verified'])->name('store.suggestion');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

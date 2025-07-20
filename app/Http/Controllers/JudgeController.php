@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Judge;
 use App\Http\Requests\StoreJudgeRequest;
-use App\Http\Requests\UpdateJudgeRequest;
+use Illuminate\Console\View\Components\Component;
+use App\Http\Requests\UpdateWinningSuggestionRequest;
 
 class JudgeController extends Controller
 {
+
+    public function displayJudgingRound()
+    {
+        return view ('judge-display');
+    }
+
+    public function addSuggestionToRound(UpdateWinningSuggestionRequest $request)
+    {
+        $request->validated();
+        
+    }
     /**
      * Display a listing of the resource.
      */

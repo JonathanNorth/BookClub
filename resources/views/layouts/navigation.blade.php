@@ -16,14 +16,19 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm: -my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('create.round')" :active="request()->routeIs('create.round')">
-                        {{__('Configure Round')}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('display.judge')" :active="request()->routeIs('display.judge')">
+                        {{ __('Judge') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('my.books')" :active="request()->routeIs('my.books')">
                         {{__('My Books')}}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm: -my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('create.round')" :active="request()->routeIs('create.round')">
+                        {{__('Configure Round')}}
                     </x-nav-link>
                 </div>
             </div>
