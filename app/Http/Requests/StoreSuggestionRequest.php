@@ -20,7 +20,7 @@ class StoreSuggestionRequest extends FormRequest
         }
         $suggestion = Suggestion::find($suggestionId);
 
-        return Auth::id() == $suggestion && $suggestion->user_id; 
+        return $suggestion && $suggestion->user_id === Auth::id();
     }
 
     /**

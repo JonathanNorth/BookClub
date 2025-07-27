@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Book;
 use App\Models\User;
+use App\Models\Round;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -12,8 +14,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('books', function(Blueprint $table){
-            $table->foreignIdFor(User::class);
+        Schema::create('votes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId(Round::class);
+            $table->foreignId(User::class);
+            $table->integer('rank');
+            $table->foreignId(Book::class);
+            $table->timestamps();
         });
     }
 
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('votes');
     }
 };

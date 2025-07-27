@@ -29,7 +29,7 @@ class SuggestionController extends Controller
      */
     public function store(StoreSuggestionRequest $request)
     {
-        $request = $request->validate();
+       Suggestion::create($request);
     }
 
     /**

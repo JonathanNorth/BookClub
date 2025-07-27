@@ -11,7 +11,7 @@
     <tbody>
         @foreach($myBooks as $book)
             <tr class="odd:bg-slate-700 even:bg-slate-600 hover:bg-gray-500">
-                <form method="POST" action="{{ route('add.suggestion')}}">
+                <form method="POST" action="{{ route('store.suggestion')}}">
                     <td class="px-2 py-1">{{$book->title}}</td>
                     <td class="px-2 py-1">{{$book->author}}</td>
                     <td class="px-2 py-1">{{$book->genre}}</td>

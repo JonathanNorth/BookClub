@@ -30,7 +30,6 @@ Route::get('/my-books', [BookController::class, 'myBooks'])->middleware(['auth',
 
 Route::get('/display-juding', [JudgeController::class, 'displayJudgingRound'])->middleware(['auth','verified'])->name('display.judge');
 
-Route::post('/add-suggestion', [JudgeController::class, 'addSuggestionToRound'])->middleware(['auth','verified'])->name('add.suggestion.to.round');
 
 Route::get('/create-suggestion', [SuggestionController::class, 'create'])->middleware(['auth','verified'])->name('create.suggestion');
 Route::post('/store-suggestion', [SuggestionController::class, 'store'])->middleware(['auth','verified'])->name('store.suggestion');

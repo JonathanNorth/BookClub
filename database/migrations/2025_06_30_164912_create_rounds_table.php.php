@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->integer('round_number');
             $table->enum('genre',['fiction','non-fiction']);
-            //$table->foreignId('judge_id')->constrained('users')->onDelete('cascade');
-            //$table->foreignId('winning_suggestion')->constrained('suggestions')->onDelete('cascade')->nullable();
+            $table->date('pick_date')->default('2025-01-01');
             $table->timestamps();
+            
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('rounds');
     }
 };
