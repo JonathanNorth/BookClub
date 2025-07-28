@@ -6,7 +6,6 @@
             <th class="px-2 py-1">{{__('Genre')}}</th>
             <th class="px-2 py-1">{{__('Winning Suggestion')}}</th>
             <th class="px-2 py-1">{{__('Pick Date')}}</th>
-            <th class="px-2 py-1"><button type="button">{{'Submit'}}</button></th>
         </tr>
     </thead>   
     <tbody>                     

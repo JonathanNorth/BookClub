@@ -1,3 +1,3 @@
-<x-users-books />
-
-<p>suggestion blade</p>
+<div>
+    <x-users-books />
+</div>

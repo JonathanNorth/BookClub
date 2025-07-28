@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Round extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'genre',

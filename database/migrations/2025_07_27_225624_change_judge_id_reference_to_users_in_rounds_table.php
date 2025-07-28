@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rounds', function(Blueprint $table){
-            $table->id();
-            $table->enum('genre',['fiction','non-fiction']);
-            $table->date('pick_date')->default('2025-01-01');
-            $table->timestamps();
-            
+        Schema::table('rounds', function (Blueprint $table) {
+
+            $table->dropForeign(['judge_id']);
+            $table->foreign('judge_id')->references('id')->on('users');
         });
     }
 
@@ -25,6 +23,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rounds');
+        Schema::table('rounds', function (Blueprint $table) {
+            //
+        });
     }
 };

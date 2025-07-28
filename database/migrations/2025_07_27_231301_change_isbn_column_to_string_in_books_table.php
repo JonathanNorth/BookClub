@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rounds', function(Blueprint $table){
-            $table->id();
-            $table->enum('genre',['fiction','non-fiction']);
-            $table->date('pick_date')->default('2025-01-01');
-            $table->timestamps();
-            
+        Schema::table('books', function (Blueprint $table) {
+            $table->string('ISBN', 13)->change();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rounds');
+        Schema::table('books', function (Blueprint $table) {
+            $table->bigInteger('ISBN')->change();
+        });
     }
 };

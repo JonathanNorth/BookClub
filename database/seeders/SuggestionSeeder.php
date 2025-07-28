@@ -12,6 +12,6 @@ class SuggestionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }
