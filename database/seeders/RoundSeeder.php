@@ -2,19 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
+use App\Models\Round;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Database\Factories\BookFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class BookSeeder extends Seeder
+class RoundSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        
+       
     }
 }

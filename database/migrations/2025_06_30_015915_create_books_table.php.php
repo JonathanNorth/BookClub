@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('author');
             $table->string('genre')->nullable();
             $table->integer('ISBN');
-            $table->string('GoodReads_Link');
+            $table->string('GoodReads_Link')->nullable();
+            $table->timestamps();
         });
     }
 

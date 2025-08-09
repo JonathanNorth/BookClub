@@ -5,21 +5,16 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
-
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('rounds', function(Blueprint $table){
-            $table->date('pick_date')->default('2025-01-01');
-            
+        Schema::table('rounds', function (Blueprint $table) {
+            $table->enum('type',['ranked_ballot','single_judge']);
         });
-
     }
-
- 
 
     /**
      * Reverse the migrations.
@@ -27,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('rounds', function (Blueprint $table) {
-            $table->dropColumn('pick_date');
+            $table->dropColumn('type');
         });
     }
 };

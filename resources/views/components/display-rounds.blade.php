@@ -14,7 +14,11 @@
             <tr class="odd:bg-slate-700 even:bg-slate-600 hover:bg-gray-500">
                 <td class="px-2 py-1">{{ ucwords($round->judge->name), "-" }}</td>
                 <td class="px-2 py-1">{{ ucwords($round->genre, "-") }}</td>
-                <td class="px-2 py-1">{{ ucwords($round->winning_suggestion, "-") }}</td>
+                @if(!$round->winningSuggestion)
+                    <td class="px-2 py-1"></td>
+                @else
+                <td class="px-2 py-1">{{ ucwords($round->winningSuggestion->book->title) }}</td>
+                @endif
                 <td class="px-2 py-1">{{$round->pick_date}}</td>
             </tr>
             @endforeach

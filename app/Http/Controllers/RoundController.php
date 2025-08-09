@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Round;
+use App\Models\Suggestion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,6 @@ class RoundController extends Controller
         $judges = User::all();
         return view('create-round', compact('judges'));
     }
-
 
 
     public function storeRound(Request $request){
@@ -38,12 +38,25 @@ class RoundController extends Controller
         $round->judge_id= $incomingFields['judge_id'];
         $round->genre = $incomingFields['genre'];
         $round->pick_date = $incomingFields['pick_date'];
-        $maxRoundNumber = DB::table('rounds')->max('round_number');
-        $round->round_number = $maxRoundNumber ? $maxRoundNumber + 1 : 1;
         $round->save();
 
         return redirect('dashboard');
 
         
+    }
+
+    public function updateWinningSuggestion(Request $request, Round $round)
+    {
+        
+        $request->validate([
+            'suggestion_id' => 'required|integer|exists:suggestions,id'
+        ]);
+
+        $suggestion = Suggestion::where('id', $request->suggestion_id)
+            ->where('round_id', $round->id)
+            ->firstOrFail();
+            
+        $round->update(['winning_suggestion' => $suggestion->id]);
+        return back();
     }
 }

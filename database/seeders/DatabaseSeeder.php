@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Book;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Round;
+use App\Models\Suggestion;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $users = User::factory(4)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        for($i=0; $i < 3; $i++){
+            $round = Round::factory()->create();
+
+            foreach($users as $user){
+                Suggestion::factory()->create([
+                    'book_id' => Book::factory(),
+                    'round_id' => $round->id,
+                    'user_id' => $user->id
+                ]);
+            }
+        }
     }
 }

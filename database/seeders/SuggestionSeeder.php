@@ -2,13 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Database\Factories\BookFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
-class BookSeeder extends Seeder
+class SuggestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.

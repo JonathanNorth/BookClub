@@ -5,15 +5,26 @@
             <th class="px-2 py-1">{{'Title'}}</th>
             <th class="px-2 py-1">{{'Author'}}</th>
             <th class="px-2 py-1">{{'Genre'}}</th>
-            <th>
+            @if($showSuggestionButton)
+            <th class="px-2 py-1">{{'Suggest'}}</th>
+            @endif
         </tr>
     </thead>
     <tbody>
         @foreach($myBooks as $book)
             <tr class="odd:bg-slate-700 even:bg-slate-600 hover:bg-gray-500">
-                <td class="px-2 py-1">{{$book->title}}</td>
-                <td class="px-2 py-1">{{$book->author}}</td>
-                <td class="px-2 py-1">{{$book->genre}}</td>
+                    <td class="px-2 py-1">{{ucwords($book->title)}}</td>
+                    <td class="px-2 py-1">{{ucwords($book->author)}}</td>
+                    <td class="px-2 py-1">{{ucwords($book->genre, "-")}}</td>
+                    @if($showSuggestionButton)
+                    <td class="px-2 py-1 m-1 border border-black bg-black rounded-full hover:bg-red-700 hover:font-white">
+                        <form method="POST" action="{{ route('round.suggestion.store', $currentRound) }}">
+                            @csrf
+                            <input type="hidden" name="book_id" value="{{ $book->id }}">
+                            <button type="submit">{{'Suggest This Book'}}</button>
+                        </form>
+                    </td>
+                    @endif
             </tr>
         @endforeach  
     </tbody>

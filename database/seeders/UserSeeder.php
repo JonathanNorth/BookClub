@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book;
+use App\Models\Suggestion;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Foundation\Auth\User;
@@ -20,6 +22,8 @@ class UserSeeder extends Seeder
         'email_verified_at' => now(),
         'password' => bcrypt('swordfish'),
         'remember_token' => Str::random(10),
-    ]);
+        ]);
+
+       
     }
 }

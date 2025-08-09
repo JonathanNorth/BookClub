@@ -6,6 +6,7 @@ use PDO;
 use App\Models\Book;
 use App\Models\Suggestion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -30,7 +31,7 @@ class BookController extends Controller
             $field = strip_tags($field);
         
        $book = new Book($incomingFields);
-       $book->user_id = auth()->id();
+       $book->user_id = Auth::id();
        $book->save();
 
         return redirect('my-books');
