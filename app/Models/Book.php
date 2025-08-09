@@ -16,6 +16,5 @@ class Book extends Model
         'genre',
         'ISBN',
     ];
-
     
 }

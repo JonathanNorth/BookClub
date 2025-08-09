@@ -14,7 +14,10 @@
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mx-10">
                 <div class="p-6 text-gray-900 dark:text-gray-100 py-10 px-10">
-                    <x-suggestion-create  :myBooks="$myBooks"/>
+                    <x-display-current-round />
+                </div>
+                <div class="p-6 text-gray-900 dark:text-gray-100 py-10 px-10">
+                    <x-users-books  :myBooks="$myBooks" :show-suggestion-button="true"/>
                 </div>
             </div>
         </div>

@@ -14,8 +14,7 @@ use App\Http\Controllers\SuggestionController;
 Route::get('/', [ProfileController::class, 'start'])->name('start');
 
 Route::get('/dashboard', function () {
-    $rounds = Round::all();
-    return view('dashboard',['rounds' => $rounds]);
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/create-round', [RoundController::class, 'create'])->middleware(['auth', 'verified'])->name('create.round');
@@ -32,7 +31,8 @@ Route::get('/display-juding', [JudgeController::class, 'displayJudgingRound'])->
 
 
 Route::get('/create-suggestion', [SuggestionController::class, 'create'])->middleware(['auth','verified'])->name('create.suggestion');
-Route::post('/store-suggestion', [SuggestionController::class, 'store'])->middleware(['auth','verified'])->name('store.suggestion');
+Route::post('/round/{round}/suggestion', [SuggestionController::class, 'store'])->middleware(['auth','verified'])->name('round.suggestion.store');
+Route::patch('round/{round}/winning_suggestion', [RoundController::class, 'updateWinningSuggestion'])->middleware(['auth','verified'])->name('round.updateWinningSuggestion');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -14,8 +14,10 @@ class Round extends Model
     use HasFactory;
 
     protected $fillable = [
+        'judge_id',
         'genre',
-        'pick_date'
+        'pick_date',
+        'winning_suggestion'
     ];
 
 
@@ -26,6 +28,15 @@ class Round extends Model
     public function books(): HasMany 
     {
         return $this->hasMany(Book::class);
+    }
+
+    public function suggestions(): HasMany
+    {
+        return $this->hasMany(Suggestion::class);
+    }
+    public function winningSuggestion()
+    {
+        return $this->belongsTo(Suggestion::class, 'winning_suggestion');
     }
  
 }

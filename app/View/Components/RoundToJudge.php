@@ -2,18 +2,17 @@
 
 namespace App\View\Components;
 
+use id;
 use Closure;
 use App\Models\Round;
-use App\Models\Suggestion;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 
-class JudgeDisplay extends Component
+class RoundToJudge extends Component
 {
 
-    public $suggestions;
-    public $myRound;
+    public $myRounds;
     /**
      * Create a new component instance.
      */
@@ -27,8 +26,8 @@ class JudgeDisplay extends Component
      */
     public function render(): View|Closure|string
     {
-
-        return view ('components.judge-display');
+        $myRound = Round::where('judge_id', Auth::id())->first();
+        return view ('components.round-to-judge', compact('myRound'));
 
     }
 }

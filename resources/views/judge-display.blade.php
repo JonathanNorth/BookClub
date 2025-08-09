@@ -9,7 +9,8 @@
         <div class="max-w-fit mx-auto sm:px-6 lg:px-8 flex">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 py-10 px-10">
-                    <x-judge-display/> 
+                    <x-round-to-judge />
+                    <x-judge-suggestions-display />
                 </div>
             </div>
         </div>

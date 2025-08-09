@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Round;
 use App\Models\Suggestion;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreSuggestionRequest;
 use App\Http\Requests\UpdateSuggestionRequest;
 
@@ -27,9 +31,24 @@ class SuggestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSuggestionRequest $request)
+    public function store(Request $request, Round $round)
     {
-       Suggestion::create($request);
+       $incomingFields = $request->validate([
+        'book_id' => 'required|integer|exists:books,id'
+       ]);
+
+
+       foreach($incomingFields as $key => &$field)
+            $field = strip_tags($field);
+        
+       $suggestion = new Suggestion($incomingFields);
+       $suggestion->user_id = Auth::id();
+       $suggestion->round_id = $round->id;
+       $suggestion->save();
+
+       return redirect('/');
+
+
     }
 
     /**

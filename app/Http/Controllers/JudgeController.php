@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Judge;
+use App\Models\Round;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreJudgeRequest;
 use Illuminate\Console\View\Components\Component;
 use App\Http\Requests\UpdateWinningSuggestionRequest;

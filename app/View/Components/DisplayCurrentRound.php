@@ -3,17 +3,20 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
+use App\Models\Round;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 
-class SuggestionCreate extends Component
+class DisplayCurrentRound extends Component
 {
+    
+   
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -21,6 +24,9 @@ class SuggestionCreate extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.suggestion-create');
+
+        $currentRound = Round::where('pick_date','>=', now())->get();
+       
+        return view('components.display-current-round', compact('currentRound'));
     }
 }
